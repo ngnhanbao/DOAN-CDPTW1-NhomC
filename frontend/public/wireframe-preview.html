@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Hôtel Monville — Hotel In Downtown Montreal | Modern Urban Boutique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-base": "#0F172A",
+            "text-secondary": "#0F172A",
+            "text-gold": "#C5A880",
+            "text-emerald": "#059669",
+            "text-muted": "#64748B",
+            "border-muted": "#E2E8F0",
+            "surface-card": "#F8FAFC",
+            "surface-subtle": "#F1F5F9"
+          },
+          boxShadow: {
+            "monville-card": "0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04)",
+            "monville-hover": "0 12px 28px -6px rgba(15, 23, 42, 0.12), 0 8px 12px -6px rgba(15, 23, 42, 0.06)",
+            "monville-gold": "0 10px 25px -5px rgba(197, 168, 128, 0.35)"
+          },
+          borderRadius: {
+            DEFAULT: "3px",
+            xs: "3px",
+            sm: "4px",
+            md: "6px"
+          },
+          fontFamily: {
+            sans: ["'Libre Franklin'", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#ffffff] text-[#0F172A] font-sans min-h-screen flex flex-col antialiased selection:bg-[#C5A880]/30 selection:text-[#0F172A]">
+  
+  <!-- Top Architectural Urban Utility Strip -->
+  <div class="w-full bg-[#0F172A] text-[#ffffff] text-[13px] py-2 px-6 border-b border-[#1E293B]">
+    <div class="max-w-[1440px] mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-6">
+        <span class="inline-flex items-center gap-2 font-medium text-[#ffffff]/90 text-[13px]">
+          <span class="material-symbols-outlined text-[16px] text-[#C5A880]">call</span>
+          FRONT DESK: <strong class="text-[#ffffff] tracking-wider">+1 (514) 379-2000</strong>
+        </span>
+        <span class="hidden sm:inline-flex items-center gap-1.5 text-[#CBD5E1] text-[13px]">
+          <span class="material-symbols-outlined text-[16px] text-[#C5A880]">location_on</span>
+          1041 RUE DE BLEURY, MONTRÉAL, QC H2Z 1M7 · DOWNTOWN MONTRÉAL
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="hidden md:inline-flex items-center gap-1.5 text-[#ffffff] font-medium text-[13px]">
+          <span class="w-2 h-2 rounded-full bg-[#059669] animate-pulse"></span>
+          <span class="material-symbols-outlined text-[16px] text-[#C5A880]">smart_toy</span>
+          AUTONOMOUS ROBOT ROOM SERVICE &amp; SELF-CHECK-IN
+        </span>
+        <a href="#booking-console" class="bg-[#C5A880]/20 border border-[#C5A880] text-[#C5A880] hover:bg-[#C5A880] hover:text-[#0F172A] px-3 py-0.5 rounded-[3px] transition-all font-semibold uppercase text-[11px]">
+          CLIENT PORTAL
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Hôtel Monville Minimalist Header -->
+  <header class="sticky top-0 left-0 w-full z-50 bg-[#ffffff]/98 backdrop-blur-md border-b border-[#E2E8F0] shadow-monville-card transition-all">
+    <div class="h-20 max-w-[1440px] mx-auto px-6 flex items-center justify-between">
+      <!-- Logo Section -->
+      <a href="/" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-[3px] bg-[#0F172A] border border-[#C5A880] text-[#C5A880] flex items-center justify-center font-bold tracking-tighter text-lg shadow-sm group-hover:bg-[#C5A880] group-hover:text-[#0F172A] transition-colors">
+          M
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <span class="text-base tracking-[0.22em] font-extrabold text-[#0F172A] uppercase leading-tight">
+              HÔTEL MONVILLE
+            </span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+          </div>
+          <span class="text-[11px] font-semibold tracking-[0.28em] text-[#64748B] uppercase">
+            DOWNTOWN MONTRÉAL
+          </span>
+        </div>
+        <div class="hidden lg:flex flex-col border-l border-[#E2E8F0] pl-3.5 ml-1">
+          <span class="text-[11px] tracking-[0.12em] text-[#0F172A] font-bold uppercase">
+            QUARTIER INTERNATIONAL
+          </span>
+          <span class="text-[11px] text-[#64748B] uppercase tracking-wider">
+            PALAIS DES CONGRÈS · OLD MONTREAL
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-7">
+        <a href="#rooms" class="text-[13px] tracking-[0.08em] uppercase font-bold text-[#0F172A] py-1.5 border-b-2 border-[#C5A880]">
+          ROOMS &amp; SUITES
+        </a>
+        <a href="#features" class="text-[13px] tracking-[0.08em] uppercase font-semibold text-[#64748B] hover:text-[#0F172A] py-1.5 border-b-2 border-transparent">
+          ROBOT DELIVERY &amp; TECH
+        </a>
+        <a href="#dining" class="text-[13px] tracking-[0.08em] uppercase font-semibold text-[#64748B] hover:text-[#0F172A] py-1.5 border-b-2 border-transparent">
+          RESTAURANT &amp; BAR
+        </a>
+        <a href="#terrace" class="text-[13px] tracking-[0.08em] uppercase font-semibold text-[#64748B] hover:text-[#0F172A] py-1.5 border-b-2 border-transparent">
+          ROOFTOP TERRACE
+        </a>
+        <a href="#booking-console" class="text-[13px] tracking-[0.08em] uppercase font-semibold text-[#64748B] hover:text-[#0F172A] py-1.5 border-b-2 border-transparent">
+          MEETINGS &amp; EVENTS
+        </a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="flex items-center gap-3">
+        <a href="/login" class="border border-[#0F172A] bg-transparent hover:bg-[#0F172A] hover:text-[#ffffff] text-[#0F172A] px-4 py-2 text-[13px] font-bold uppercase tracking-wider transition-colors duration-150 rounded-[3px]">
+          CLIENT LOGIN
+        </a>
+        <a href="#booking-console" class="hidden sm:inline-flex items-center gap-1.5 bg-[#0F172A] hover:bg-[#C5A880] text-[#ffffff] hover:text-[#0F172A] px-5 py-2 text-[13px] font-bold uppercase tracking-wider transition-colors duration-150 shadow-sm rounded-[3px]">
+          <span class="material-symbols-outlined text-[16px] text-[#C5A880]">calendar_today</span>
+          BOOK A ROOM
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 w-full bg-[#ffffff]">
+    <!-- Brand Specification Strip -->
+    <div class="bg-[#F8FAFC] border-b border-[#E2E8F0] py-2 px-6">
+      <div class="max-w-[1440px] mx-auto flex flex-wrap items-center justify-between gap-3 text-[13px] text-[#64748B]">
+        <div class="flex items-center gap-3">
+          <span class="font-bold text-[#0F172A] tracking-wider uppercase flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-[#C5A880]"></span>
+            HÔTEL MONVILLE
+          </span>
+          <span class="text-[#CBD5E1]">|</span>
+          <span class="font-medium text-[#0F172A]">1041 RUE DE BLEURY, MONTRÉAL · DOWNTOWN</span>
+          <span class="hidden md:inline text-[#CBD5E1]">|</span>
+          <span class="hidden md:inline text-[#64748B]">MINIMALIST ARCHITECTURE &amp; CONNECTED HOSPITALITY</span>
+        </div>
+        <div class="flex items-center gap-4 text-[12px]">
+          <span class="inline-flex items-center gap-1.5 text-[#059669] font-bold">
+            <span class="material-symbols-outlined text-[16px] text-[#059669]">verified</span> BEST RATE GUARANTEED DIRECT
+          </span>
+          <span class="hidden lg:inline-flex items-center gap-1.5 text-[#C5A880] font-semibold">
+            <span class="material-symbols-outlined text-[16px] text-[#C5A880]">smart_toy</span> AUTONOMOUS ROBOT SERVICE
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-[1440px] mx-auto px-6 py-10 space-y-16">
+      <!-- MODULE 01: HERO SECTION -->
+      <section class="border border-[#C5A880]/40 bg-[#F8FAFC] p-8 md:p-12 rounded-[3px] shadow-monville-card">
+        <div class="flex items-center justify-between border-b border-[#E2E8F0] pb-4 mb-8">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-[1px] bg-[#C5A880]"></span>
+            <span class="text-[13px] font-bold uppercase tracking-[0.2em] text-[#0F172A]">
+              MODULE 01: DOWNTOWN MONTREAL BOUTIQUE HOTEL
+            </span>
+          </div>
+          <div class="flex items-center gap-2 text-[12px] font-semibold tracking-wider text-[#64748B] uppercase">
+            <span class="material-symbols-outlined text-[16px] text-[#C5A880]">domain</span> 1041 RUE DE BLEURY · MONTRÉAL (QC)
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 bg-[#0F172A] border border-[#C5A880]/50 text-[#C5A880] px-3.5 py-1 rounded-[3px] text-[12px] font-bold uppercase tracking-wider">
+              <span class="material-symbols-outlined text-[16px] text-[#C5A880]">smart_toy</span> CANADA'S PIONEER IN HIGH-TECH HOSPITALITY
+            </div>
+
+            <h1 class="text-3xl md:text-5xl lg:text-[52px] font-extrabold text-[#0F172A] tracking-tight leading-[1.12]">
+              HOTEL IN DOWNTOWN <span class="text-[#C5A880]">MONTREAL</span>
+            </h1>
+
+            <p class="text-base text-[#0F172A] leading-[26px] max-w-2xl font-normal">
+              Tọa lạc tại vị trí vàng <strong>1041 Rue de Bleury</strong>, nơi giao thoa giữa nhịp đập sôi động của <strong>Downtown Montréal</strong> và nét quyến rũ lịch sử của <strong>Old Montreal</strong>. Hôtel Monville mang đến trải nghiệm lưu trú đương đại sắc sảo với kiến trúc kính từ trần đến sàn, robot phục vụ phòng tự hành đầu tiên tại Canada và quy trình tự check-in trong 60 giây.
+            </p>
+
+            <!-- Technical Spec Matrix -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              <div class="border border-[#E2E8F0] bg-[#ffffff] p-3 rounded-[3px] shadow-xs">
+                <div class="text-[11px] text-[#64748B] font-semibold uppercase tracking-wider">KIOSK CHECK-IN</div>
+                <div class="text-sm font-bold text-[#0F172A] mt-0.5">15:00 EST</div>
+                <div class="text-[11px] text-[#059669] font-medium mt-0.5">60s Contactless</div>
+              </div>
+              <div class="border border-[#E2E8F0] bg-[#ffffff] p-3 rounded-[3px] shadow-xs">
+                <div class="text-[11px] text-[#64748B] font-semibold uppercase tracking-wider">CHECK-OUT</div>
+                <div class="text-sm font-bold text-[#0F172A] mt-0.5">12:00 EST</div>
+                <div class="text-[11px] text-[#C5A880] font-medium mt-0.5">Express Mobile</div>
+              </div>
+              <div class="border border-[#E2E8F0] bg-[#ffffff] p-3 rounded-[3px] shadow-xs">
+                <div class="text-[11px] text-[#64748B] font-semibold uppercase tracking-wider">ROBOT SERVICE</div>
+                <div class="text-sm font-bold text-[#0F172A] mt-0.5">24/7 ACTIVE</div>
+                <div class="text-[11px] text-[#059669] font-medium mt-0.5">Direct to door</div>
+              </div>
+              <div class="border border-[#E2E8F0] bg-[#ffffff] p-3 rounded-[3px] shadow-xs">
+                <div class="text-[11px] text-[#64748B] font-semibold uppercase tracking-wider">WI-FI SPEED</div>
+                <div class="text-sm font-bold text-[#0F172A] mt-0.5">1 GIGABIT</div>
+                <div class="text-[11px] text-[#C5A880] font-medium mt-0.5">Fiber dedicated</div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3 pt-4">
+              <a href="#booking-console" class="bg-[#0F172A] hover:bg-[#C5A880] text-[#ffffff] hover:text-[#0F172A] px-7 py-3 text-[13px] font-bold uppercase tracking-wider transition-colors duration-150 flex items-center gap-2 rounded-[3px] shadow-sm">
+                <span class="material-symbols-outlined text-[16px] text-[#C5A880]">calendar_today</span>
+                BOOK YOUR STAY DIRECT
+              </a>
+              <a href="#rooms" class="bg-[#ffffff] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#0F172A] px-7 py-3 text-[13px] font-bold uppercase tracking-wider transition-colors duration-150 flex items-center gap-2 rounded-[3px]">
+                DISCOVER THE HOTEL <span class="material-symbols-outlined text-[16px] text-[#C5A880]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Image Box -->
+          <div class="lg:col-span-5 relative">
+            <div class="border-2 border-[#C5A880]/50 p-2 bg-[#ffffff] rounded-[3px] shadow-monville-hover">
+              <div class="relative aspect-[4/3] w-full overflow-hidden rounded-[2px] bg-[#0F172A]">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80" alt="Hôtel Monville King Room" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 bg-[#ffffff] text-[#0F172A] p-3.5 border border-[#C5A880] rounded-[3px] shadow-monville-card flex items-center justify-between">
+                  <div>
+                    <div class="text-[11px] font-bold tracking-widest uppercase text-[#C5A880]">FEATURED ACCOMMODATION</div>
+                    <div class="text-sm font-bold text-[#0F172A]">MONVILLE KING ROOM · SKYLINE VIEW</div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-[11px] text-[#64748B] block">From</span>
+                    <span class="text-base font-extrabold text-[#C5A880]">$219 CAD</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 02: BOOKING CONSOLE -->
+      <section id="booking-console" class="border-2 border-[#C5A880] bg-[#ffffff] p-6 md:p-8 rounded-[3px] shadow-monville-card">
+        <div class="flex flex-col gap-6">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#E2E8F0] pb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 bg-[#C5A880] rounded-[1px]"></span>
+              <span class="text-[13px] font-bold uppercase tracking-[0.2em] text-[#0F172A]">
+                MODULE 02: RESERVATIONS ENGINE &amp; DIRECT RATE SEARCH
+              </span>
+            </div>
+            <span class="text-[12px] uppercase text-[#059669] font-bold flex items-center gap-1.5 bg-[#059669]/10 border border-[#059669]/30 px-3 py-1 rounded-[3px]">
+              <span class="material-symbols-outlined text-[16px] text-[#059669]">check_circle</span> OFFICIAL WEBSITE · BEST RATE GUARANTEE
+            </span>
+          </div>
+
+          <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[12px] uppercase tracking-wider text-[#0F172A] flex items-center gap-1.5 font-bold">
+                <span class="material-symbols-outlined text-[16px] text-[#C5A880]">domain</span> LOẠI PHÒNG &amp; SUITE
+              </label>
+              <div class="relative flex items-center border border-[#CBD5E1] bg-[#ffffff] px-4 py-3 rounded-[3px]">
+                <select class="w-full bg-transparent text-[13px] text-[#0F172A] font-semibold focus:outline-none appearance-none cursor-pointer pr-6">
+                  <option>Monville King Room (Skyline View)</option>
+                  <option>Executive Double Queen Suite</option>
+                  <option>Monville Suite with Private Terrace</option>
+                </select>
+                <span class="material-symbols-outlined text-[18px] text-[#C5A880] absolute right-3 pointer-events-none">expand_more</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[12px] uppercase tracking-wider text-[#0F172A] flex items-center gap-1.5 font-bold">
+                <span class="material-symbols-outlined text-[16px] text-[#C5A880]">calendar_today</span> NGÀY CHECK-IN
+              </label>
+              <input type="date" value="2026-10-15" class="w-full border border-[#CBD5E1] bg-[#ffffff] px-4 py-3 rounded-[3px] text-[13px] text-[#0F172A] font-semibold focus:outline-none focus:border-[#C5A880]"/>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[12px] uppercase tracking-wider text-[#0F172A] flex items-center gap-1.5 font-bold">
+                <span class="material-symbols-outlined text-[16px] text-[#C5A880]">calendar_today</span> NGÀY CHECK-OUT
+              </label>
+              <input type="date" value="2026-10-18" class="w-full border border-[#CBD5E1] bg-[#ffffff] px-4 py-3 rounded-[3px] text-[13px] text-[#0F172A] font-semibold focus:outline-none focus:border-[#C5A880]"/>
+            </div>
+
+            <button type="button" class="w-full bg-[#0F172A] hover:bg-[#C5A880] text-[#ffffff] hover:text-[#0F172A] px-6 py-3.5 text-[13px] font-bold uppercase tracking-wider transition-colors duration-150 flex items-center justify-center gap-2 rounded-[3px] shadow-sm">
+              <span class="material-symbols-outlined text-[16px] text-[#C5A880]">search</span> CHECK AVAILABILITY
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- MODULE 03: ROOMS DISPLAY -->
+      <section id="rooms" class="space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E2E8F0] pb-4">
+          <div>
+            <div class="flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.2em] text-[#C5A880] mb-1">
+              <span class="w-2 h-2 bg-[#C5A880] rounded-[1px]"></span> MODULE 03: ACCOMMODATION SELECTION
+            </div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+              MONVILLE ROOMS &amp; SUITES
+            </h2>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Room 1 -->
+          <div class="border border-[#E2E8F0] hover:border-[#C5A880] bg-[#ffffff] rounded-[3px] overflow-hidden shadow-monville-card flex flex-col transition-all">
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0F172A]">
+              <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=80" alt="Monville King Room" class="w-full h-full object-cover"/>
+              <div class="absolute top-3 left-3 bg-[#059669] text-[#ffffff] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider rounded-[2px]">
+                AVAILABLE DIRECT
+              </div>
+              <div class="absolute bottom-3 right-3 bg-[#0F172A] text-[#C5A880] border border-[#C5A880]/30 px-3 py-1 text-sm font-extrabold rounded-[2px] shadow-sm">
+                $219 CAD <span class="text-[10px] font-normal text-[#CBD5E1]">/ ĐÊM</span>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <div class="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider mb-1 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px] text-[#C5A880]">location_on</span> DOWNTOWN MONTRÉAL · HIGH FLOOR
+                </div>
+                <h3 class="text-lg font-bold text-[#0F172A] leading-snug">
+                  MONVILLE KING ROOM (SKYLINE VIEW)
+                </h3>
+                <p class="text-[13px] text-[#64748B] leading-[22px] mt-2">
+                  Cửa kính từ trần đến sàn ngắm toàn cảnh đường chân trời Montreal, giường King cỡ lớn cao cấp Simmons Beautyrest, vòi sen đứng áp lực mưa thác nước và bàn làm việc ốp gỗ sồi địa phương.
+                </p>
+              </div>
+              <div class="pt-2 border-t border-[#E2E8F0] grid grid-cols-2 gap-2">
+                <button class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#F8FAFC] py-2 text-[12px] font-bold uppercase tracking-wider rounded-[3px]">DETAILS</button>
+                <button class="w-full bg-[#0F172A] hover:bg-[#C5A880] text-[#ffffff] hover:text-[#0F172A] py-2 text-[12px] font-bold uppercase tracking-wider rounded-[3px] transition-colors">BOOK NOW</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Room 2 -->
+          <div class="border border-[#E2E8F0] hover:border-[#C5A880] bg-[#ffffff] rounded-[3px] overflow-hidden shadow-monville-card flex flex-col transition-all">
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0F172A]">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80" alt="Executive Double Queen" class="w-full h-full object-cover"/>
+              <div class="absolute top-3 left-3 bg-[#0F172A] text-[#C5A880] border border-[#C5A880]/50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider rounded-[2px]">
+                BUSINESS &amp; TECH
+              </div>
+              <div class="absolute bottom-3 right-3 bg-[#0F172A] text-[#C5A880] border border-[#C5A880]/30 px-3 py-1 text-sm font-extrabold rounded-[2px] shadow-sm">
+                $259 CAD <span class="text-[10px] font-normal text-[#CBD5E1]">/ ĐÊM</span>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <div class="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider mb-1 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px] text-[#C5A880]">location_on</span> QUARTIER INTERNATIONAL · PALAIS DES CONGRÈS
+                </div>
+                <h3 class="text-lg font-bold text-[#0F172A] leading-snug">
+                  EXECUTIVE DOUBLE QUEEN SUITE
+                </h3>
+                <p class="text-[13px] text-[#64748B] leading-[22px] mt-2">
+                  Không gian rộng rãi với hai giường Queen sang trọng, công thái học tối ưu cho khách tham dự hội nghị công nghệ, máy pha cà phê Nespresso và dịch vụ robot phục vụ tận phòng.
+                </p>
+              </div>
+              <div class="pt-2 border-t border-[#E2E8F0] grid grid-cols-2 gap-2">
+                <button class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#F8FAFC] py-2 text-[12px] font-bold uppercase tracking-wider rounded-[3px]">DETAILS</button>
+                <button class="w-full bg-[#0F172A] hover:bg-[#C5A880] text-[#ffffff] hover:text-[#0F172A] py-2 text-[12px] font-bold uppercase tracking-wider rounded-[3px] transition-colors">BOOK NOW</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Room 3 -->
+          <div class="border border-[#E2E8F0] hover:border-[#C5A880] bg-[#ffffff] rounded-[3px] overflow-hidden shadow-monville-card flex flex-col transition-all">
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0F172A]">
+              <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=900&q=80" alt="Monville Suite with Private Terrace" class="w-full h-full object-cover"/>
+              <div class="absolute top-3 left-3 bg-[#0F172A] text-[#C5A880] border border-[#C5A880]/50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider rounded-[2px]">
+                TOP FLOOR LUXURY
+              </div>
+              <div class="absolute bottom-3 right-3 bg-[#0F172A] text-[#C5A880] border border-[#C5A880]/30 px-3 py-1 text-sm font-extrabold rounded-[2px] shadow-sm">
+                $389 CAD <span class="text-[10px] font-normal text-[#CBD5E1]">/ ĐÊM</span>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <div class="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider mb-1 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px] text-[#C5A880]">location_on</span> 20TH FLOOR ROOFTOP PENTHOUSE
+                </div>
+                <h3 class="text-lg font-bold text-[#0F172A] leading-snug">
+                  MONVILLE SUITE WITH PRIVATE TERRACE
+                </h3>
+                <p class="text-[13px] text-[#64748B] leading-[22px] mt-2">
+                  Tầng cao nhất với ban công riêng tư nhìn trọn vẹn cảnh đêm lộng lẫy của Downtown Montreal, bồn tắm sâu ngâm mình thư giãn, phòng khách kiến trúc mở và đồ dùng nhà tắm sinh thái cao cấp.
+                </p>
+              </div>
+              <div class="pt-2 border-t border-[#E2E8F0] grid grid-cols-2 gap-2">
+                <button class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#F8FAFC] py-2 text-[12px] font-bold uppercase tracking-wider rounded-[3px]">DETAILS</button>
+                <button class="w-full bg-[#0F172A] hover:bg-[#C5A880] text-[#ffffff] hover:text-[#0F172A] py-2 text-[12px] font-bold uppercase tracking-wider rounded-[3px] transition-colors">BOOK NOW</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 04: URBAN TECH FEATURES -->
+      <section id="features" class="border border-[#E2E8F0] bg-[#F8FAFC] p-8 md:p-12 rounded-[3px] space-y-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E2E8F0] pb-4">
+          <div>
+            <div class="flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.2em] text-[#C5A880] mb-1">
+              <span class="w-2 h-2 bg-[#C5A880] rounded-[1px]"></span> MODULE 04: URBAN TECH &amp; LIFESTYLE
+            </div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+              INNOVATION IN DOWNTOWN MONTREAL
+            </h2>
+          </div>
+          <span class="text-[13px] text-[#64748B] font-medium">4 Tiện ích định hình phong cách nghỉ dưỡng thông minh tại Montréal</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-[#ffffff] border border-[#E2E8F0] hover:border-[#C5A880] p-6 rounded-[3px] shadow-monville-card space-y-3 transition-colors">
+            <div class="w-10 h-10 rounded-[3px] bg-[#0F172A] text-[#C5A880] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]">smart_toy</span>
+            </div>
+            <div class="text-[11px] font-bold text-[#C5A880] uppercase">CANADA'S FIRST ROOM SERVICE ROBOT</div>
+            <h3 class="text-base font-extrabold text-[#0F172A]">AUTONOMOUS DELIVERY ROBOT</h3>
+            <p class="text-[13px] text-[#64748B] leading-[22px]">Robot tự hành đầu tiên trong ngành khách sạn Canada, giao thức ăn nhẹ, cà phê đến tận phòng bạn trong vài phút.</p>
+          </div>
+
+          <div class="bg-[#ffffff] border border-[#E2E8F0] hover:border-[#C5A880] p-6 rounded-[3px] shadow-monville-card space-y-3 transition-colors">
+            <div class="w-10 h-10 rounded-[3px] bg-[#C5A880]/20 text-[#C5A880] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]">domain</span>
+            </div>
+            <div class="text-[11px] font-bold text-[#C5A880] uppercase">20TH FLOOR PANORAMIC CITYSCAPE</div>
+            <h3 class="text-base font-extrabold text-[#0F172A]">ROOFTOP SKY TERRACE &amp; LOUNGE</h3>
+            <p class="text-[13px] text-[#64748B] leading-[22px]">Sân thượng tầng 20 lộng gió ngắm nhìn toàn cảnh trung tâm Downtown Montreal và Mont-Royal với cocktail độc quyền.</p>
+          </div>
+
+          <div class="bg-[#ffffff] border border-[#E2E8F0] hover:border-[#C5A880] p-6 rounded-[3px] shadow-monville-card space-y-3 transition-colors">
+            <div class="w-10 h-10 rounded-[3px] bg-[#059669]/15 text-[#059669] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]">restaurant</span>
+            </div>
+            <div class="text-[11px] font-bold text-[#059669] uppercase">LOCAL QUEBEC TERROIR GASTRONOMY</div>
+            <h3 class="text-base font-extrabold text-[#0F172A]">MONVILLE RESTAURANT &amp; BAR</h3>
+            <p class="text-[13px] text-[#64748B] leading-[22px]">Thưởng thức ẩm thực hiện đại tôn vinh nông sản bản địa Québec, cà phê espresso rang xay thủ công và quầy bar cocktail.</p>
+          </div>
+
+          <div class="bg-[#ffffff] border border-[#E2E8F0] hover:border-[#C5A880] p-6 rounded-[3px] shadow-monville-card space-y-3 transition-colors">
+            <div class="w-10 h-10 rounded-[3px] bg-[#0F172A]/10 text-[#0F172A] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]">wifi</span>
+            </div>
+            <div class="text-[11px] font-bold text-[#64748B] uppercase">SELF-CHECK-IN &amp; GIGABIT WI-FI</div>
+            <h3 class="text-base font-extrabold text-[#0F172A]">SMART CONNECTED ROOMS</h3>
+            <p class="text-[13px] text-[#64748B] leading-[22px]">Ki-ốt tự làm thủ tục nhận phòng chỉ trong 60 giây, chìa khóa số trên smartphone và Wi-Fi cáp quang 1Gbps siêu tốc.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 05: PRESS ACCLAIM -->
+      <section class="border border-[#C5A880]/40 bg-[#ffffff] p-8 md:p-12 rounded-[3px] shadow-monville-card">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5 space-y-4 border-b lg:border-b-0 lg:border-r border-[#E2E8F0] pb-6 lg:pb-0 lg:pr-8">
+            <div class="text-[12px] font-bold uppercase tracking-[0.2em] text-[#C5A880]">VERIFIED GUEST ACCLAIM</div>
+            <div class="text-5xl md:text-6xl font-extrabold text-[#0F172A] tracking-tight">
+              4.9<span class="text-2xl text-[#64748B]">/5.0</span>
+            </div>
+            <div class="flex items-center gap-1 text-[#C5A880]">
+              <span class="material-symbols-outlined text-[20px]">star</span>
+              <span class="material-symbols-outlined text-[20px]">star</span>
+              <span class="material-symbols-outlined text-[20px]">star</span>
+              <span class="material-symbols-outlined text-[20px]">star</span>
+              <span class="material-symbols-outlined text-[20px]">star</span>
+            </div>
+            <p class="text-[13px] text-[#64748B] leading-[22px]">
+              Dựa trên hơn 1,850 đánh giá được xác thực từ du khách doanh nhân và các đoàn chuyên gia tham dự hội nghị tại Palais des congrès.
+            </p>
+          </div>
+          <div class="lg:col-span-7 space-y-6">
+            <blockquote class="text-lg md:text-xl font-semibold text-[#0F172A] leading-relaxed italic">
+              “Hôtel Monville là biểu tượng tiêu biểu cho sự chuyển mình của Downtown Montreal: hiện đại, tối giản, thanh lịch tuyệt đối và ứng dụng công nghệ robot giao phòng cực kỳ ấn tượng.”
+            </blockquote>
+            <div class="border-t border-[#E2E8F0] pt-4 text-[13px]">
+              <strong class="text-[#0F172A] block">FORBES TRAVEL GUIDE / ARCHITECTURAL DIGEST</strong>
+              <span class="text-[#64748B]">Downtown Montreal Boutique Hotel Review</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 06: NEWSLETTER -->
+      <section class="bg-[#0F172A] text-[#ffffff] border-2 border-[#C5A880] p-8 md:p-12 rounded-[3px] shadow-monville-hover">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-3">
+            <div class="inline-flex items-center gap-2 bg-[#C5A880]/20 text-[#C5A880] border border-[#C5A880]/40 px-3 py-1 rounded-[2px] text-[11px] font-bold uppercase tracking-wider">
+              <span class="material-symbols-outlined text-[14px]">auto_awesome</span> DIRECT CLIENT PRIVILEGES
+            </div>
+            <h2 class="text-2xl md:text-4xl font-extrabold text-[#ffffff] tracking-tight">
+              THE MONVILLE INSIDER
+            </h2>
+            <p class="text-[13px] text-[#CBD5E1] leading-[24px] max-w-xl">
+              Đăng ký nhận bản tin để nhận ngay <strong class="text-[#C5A880]">10% ưu đãi đặt phòng trực tiếp</strong>, quyền đặt phòng ưu tiên vào mùa lễ hội <strong>Montreal International Jazz Festival</strong> và <strong>Formula 1 Grand Prix du Canada</strong>.
+            </p>
+          </div>
+
+          <div class="lg:col-span-5">
+            <form class="space-y-3">
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="email"
+                  required
+                  placeholder="Nhập địa chỉ email của bạn..."
+                  class="flex-1 bg-[#1E293B] border border-[#334155] text-[#ffffff] px-4 py-3 text-[13px] rounded-[3px] focus:outline-none focus:border-[#C5A880] placeholder-[#64748B]"
+                />
+                <button
+                  type="button"
+                  class="bg-[#C5A880] hover:bg-[#D4BE9B] text-[#0F172A] px-6 py-3 text-[13px] font-bold uppercase tracking-wider rounded-[3px] transition-colors whitespace-nowrap"
+                >
+                  SUBSCRIBE
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- HÔTEL MONVILLE FOOTER -->
+  <footer class="w-full bg-[#0F172A] text-[#ffffff] border-t-2 border-[#C5A880] mt-auto">
+    <div class="max-w-[1440px] mx-auto px-6 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="space-y-4">
+          <div class="border border-[#C5A880] p-2 inline-block bg-[#1E293B] rounded-[3px] px-3">
+            <span class="text-xs tracking-[0.2em] font-extrabold text-[#C5A880] uppercase">
+              HÔTEL MONVILLE · MONTRÉAL
+            </span>
+          </div>
+          <p class="text-[13px] text-[#CBD5E1] leading-[22px]">
+            Hotel In Downtown Montreal: 1041 Rue de Bleury, Montréal, QC H2Z 1M7. Sáng tạo kiến trúc đô thị tối giản kết hợp dịch vụ phòng tự động bằng Robot đầu tiên tại Canada.
+          </p>
+          <div class="flex items-center gap-2 text-[12px] text-[#059669] font-semibold">
+            <span class="material-symbols-outlined text-[16px]">verified</span> 4-KEY GREEN KEY ECO-RATING CERTIFIED
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="text-[12px] font-bold uppercase tracking-widest text-[#C5A880] border-b border-[#334155] pb-2">ROOMS &amp; SUITES</div>
+          <ul class="space-y-2 text-[13px] text-[#CBD5E1]">
+            <li>Monville King Room (Skyline View)</li>
+            <li>Executive Double Queen Suite</li>
+            <li>Monville Suite with Private Terrace</li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <div class="text-[12px] font-bold uppercase tracking-widest text-[#C5A880] border-b border-[#334155] pb-2">URBAN TECH &amp; LIFESTYLE</div>
+          <ul class="space-y-2 text-[13px] text-[#CBD5E1]">
+            <li>Autonomous Room Service Robot</li>
+            <li>Monville Restaurant &amp; Cocktail Bar</li>
+            <li>Rooftop Sky Terrace (20th Floor)</li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <div class="text-[12px] font-bold uppercase tracking-widest text-[#C5A880] border-b border-[#334155] pb-2">LOCATION &amp; CONTACT</div>
+          <div class="space-y-2 text-[13px] text-[#CBD5E1] leading-[22px]">
+            <p><strong class="text-[#ffffff]">Hôtel Monville:</strong> 1041 Rue de Bleury, Montréal, QC H2Z 1M7</p>
+            <p><strong class="text-[#ffffff]">Metro:</strong> Square-Victoria-OACI &amp; Place-d'Armes</p>
+            <p>Phone: +1 (514) 379-2000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-[#334155] pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[12px] text-[#94A3B8]">
+        <span>&copy; 2026 HÔTEL MONVILLE. ALL RIGHTS RESERVED. HOTEL IN DOWNTOWN MONTREAL.</span>
+        <div class="flex items-center gap-4">
+          <span class="text-[#059669] font-medium">DESIGN SYSTEM WCAG 2.2 AA</span>
+          <span class="text-[#C5A880] font-bold uppercase tracking-wider">MODERN URBAN BOUTIQUE</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

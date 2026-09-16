@@ -1,312 +1,420 @@
-import React from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { Hotel, User, LogOut, Calendar, Phone, MapPin } from "lucide-react";
+import React, { useState } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import React from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { LogOut, Menu, X } from "lucide-react";
 
 export default function GuestLayout() {
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
   const location = useLocation();
-
-  const navLinks = [
-    { label: 'ROOMS', path: '/rooms' },
-    { label: 'SERVICES', path: '/services' },
-    { label: 'DINING', path: '/dining' },
-    { label: 'ABOUT US', path: '/about-us' },
-    { label: 'MY BOOKINGS', path: '/my-bookings' },
-  ];
+  const pathname = location.pathname;
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState("vi");
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
-      {/* Top Banner Contact */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-6 flex justify-between items-center border-b border-slate-800">
-        <div className="flex items-center gap-6">
-          <span className="flex items-center gap-1.5">
-            <Phone className="w-3.5 h-3.5 text-amber-500" /> Hotline: 1900 8888
-            (24/7)
-          </span>
-          <span className="hidden sm:flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 text-amber-500" /> TP. Hồ Chí Minh
-            &bull; Đà Nẵng &bull; Nha Trang
-          </span>
-        </div>
-        <div className="flex items-center gap-3">
-          {user?.role && user.role !== "Guest" && (
-            <Link
-              to="/dashboard"
-              className="text-amber-400 hover:underline font-medium"
-            >
-              Vào Trang Vận Hành ({user.role})
-            </Link>
-          )}
-        </div>
-      </div>
-
-      {/* Main Navbar */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur shadow-sm border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-11 h-11 bg-gradient-to-br from-amber-500 to-amber-700 rounded-xl flex items-center justify-center text-white shadow-md shadow-amber-500/20">
-              <Hotel className="w-6 h-6" />
+    <div className="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col">
+      {/* Top Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+        <div className="h-20 w-full px-margin flex items-center justify-between">
+          {/* Brand Logo */}
+          <Link to="/" className="flex items-center gap-space-md group focus:outline-none">
+            <div className="w-11 h-11 rounded-lg bg-secondary-container/40 flex items-center justify-center transition-colors group-hover:bg-secondary-container/60">
+              <span className="material-symbols-outlined text-secondary text-[26px]">spa</span>
             </div>
-            <div>
-              <span className="text-xl font-bold tracking-tight text-slate-900 block leading-tight">
-                GRAND HOTEL
-    <div className="bg-surface-container-lowest text-on-surface font-body-md text-body-md min-h-screen flex flex-col">
-      {/* Fixed Top Header */}
-      <header className="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest border-b border-primary">
-        <div className="h-16 max-w-container-max mx-auto px-gutter-desktop flex items-center justify-between">
-          {/* Logo Box */}
-          <Link to="/" className="flex items-center gap-space-sm">
-            <div className="relative w-36 h-9 border border-primary bg-surface-container-lowest flex items-center justify-center">
-              <svg className="absolute inset-0 w-full h-full stroke-outline-variant stroke-[0.75]" preserveAspectRatio="none" viewBox="0 0 100 100">
-                <line x1="0" y1="0" x2="100" y2="100" />
-                <line x1="100" y1="0" x2="0" y2="100" />
-              </svg>
-              <span className="relative z-10 bg-surface-container-lowest px-space-xs font-caption text-caption uppercase text-primary border border-outline-variant">
-                [ HOTEL LOGO ]
+            <div className="flex flex-col">
+              <span className="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-tight group-hover:text-secondary transition-colors">
+                Grand Horizon
               </span>
-              <span className="text-[11px] uppercase tracking-widest text-amber-600 font-semibold">
-                Luxury &amp; Resort
+              <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold">
+                Resort &amp; Suites
               </span>
             </div>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
-            <Link to="/" className="hover:text-amber-600 transition-colors">
-              Trang chủ
+          {/* Desktop Navigation Links */}
+          <nav className="hidden xl:flex items-center gap-space-lg" data-active-classes="text-secondary font-title-md">
+            <Link
+              to="/"
+              className={`font-title-md text-title-md transition-colors ${
+                pathname === "/" ? "text-secondary font-semibold" : "text-on-surface-variant hover:text-secondary"
+              }`}
+              data-path="trang-chu"
+            >
+              Trang Chủ
             </Link>
             <Link
               to="/rooms"
-              className="hover:text-amber-600 transition-colors"
+              className={`font-title-md text-title-md transition-colors ${
+                pathname === "/rooms" ? "text-secondary font-semibold" : "text-on-surface-variant hover:text-secondary"
+              }`}
+              data-path="kham-pha-phong"
             >
-              Hạng phòng
+              Khám Phá Phòng
             </Link>
+            <a
+              href="/#dich-vu-tien-ich"
+              className="font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors"
+              data-path="dich-vu-tien-ich"
+            >
+              Dịch Vụ &amp; Tiện Ích
+            </a>
             <Link
               to="/dining"
-              className="hover:text-amber-600 transition-colors"
+              className={`font-title-md text-title-md transition-colors ${
+                pathname === "/dining" ? "text-secondary font-semibold" : "text-on-surface-variant hover:text-secondary"
+              }`}
+              data-path="am-thuc-fb"
             >
-              Ẩm thực F&B
+              Ẩm Thực F&amp;B
             </Link>
-            <Link
-              to="/services"
-              className="hover:text-amber-600 transition-colors"
+            <a
+              href="/#uu-dai-hoi-vien"
+              className="font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors"
+              data-path="uu-dai-hoi-vien"
             >
-              Dịch vụ & Spa
-            </Link>
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center gap-space-lg">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path || (link.path === '/rooms' && location.pathname === '/');
-              return (
-                <Link
-                  key={link.label}
-                  to={link.path}
-                  className={`uppercase transition-colors py-1 ${
-                    isActive
-                      ? 'border-b-2 border-primary font-headline-sm text-primary'
-                      : 'font-label-md text-label-md text-on-surface-variant hover:text-primary'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+              Ưu Đãi &amp; Hội Viên
+            </a>
           </nav>
 
-          <div className="flex items-center gap-4">
-          {/* User / Sign In Action */}
+          {/* Right Action Icons & User */}
           <div className="flex items-center gap-space-md">
-            {user ? (
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-semibold text-slate-700 hidden sm:inline">
-                  {user.fullName || user.email}
+            {/* Language Selector */}
+            <div className="relative">
+              <button
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                className="hidden lg:flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface transition-colors py-space-xs px-space-sm rounded cursor-pointer"
+                type="button"
+              >
+                <span className="font-label-md text-label-md">
+                  {currentLang === "en" ? "🇺🇸 EN" : "🇻🇳 VN"}
                 </span>
-              <div className="flex items-center gap-space-sm">
-                <Link
-                  to={user.role === 'Guest' ? '/my-bookings' : '/dashboard'}
-                  className="border border-primary bg-surface-container-lowest hover:bg-primary hover:text-on-primary text-primary px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wide transition-colors"
-                >
-                  [ {user.role === 'Guest' ? user.fullName || 'MY ACCOUNT' : `DASHBOARD (${user.role})`} ]
-                </Link>
-                <button
-                  onClick={logout}
-                  title="Đăng xuất"
-                  className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
-                  title="Sign Out"
-                  className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary hover:bg-red-600 transition"
-                >
-                  <LogOut className="w-5 h-5" />
-                  <span className="material-symbols-outlined text-[18px]">logout</span>
-                </button>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-              <div className="flex items-center gap-space-sm">
-                <Link
-                  to="/login"
-                  className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-amber-600 transition"
-                  className="border border-primary bg-surface-container-lowest hover:bg-primary hover:text-on-primary text-primary px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wide transition-colors"
-                >
-                  Đăng nhập
-                  [ SIGN IN / REGISTER ]
-                </Link>
-                <Link
-                  to="/rooms"
-                  className="px-5 py-2.5 text-sm font-semibold text-white bg-amber-600 hover:bg-amber-700 rounded-xl shadow-sm transition flex items-center gap-2"
-                  to="/login"
-                  className="w-8 h-8 rounded-full bg-primary flex items-center justify-center"
-                >
-                  <Calendar className="w-4 h-4" /> Đặt phòng ngay
+                <span className="material-symbols-outlined text-[16px]">expand_more</span>
+              </button>
+
+              {langDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-32 bg-surface-container-lowest rounded-lg shadow-lg border border-surface-container-high py-1 z-50 animate-fade-in">
+                  <button
+                    onClick={() => {
+                      setCurrentLang("vi");
+                      setLangDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-3 py-1.5 text-sm hover:bg-surface-container-low flex items-center gap-2 cursor-pointer ${
+                      currentLang === "vi" ? "text-secondary font-semibold" : "text-on-surface"
+                    }`}
+                  >
+                    🇻🇳 Tiếng Việt
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCurrentLang("en");
+                      setLangDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-3 py-1.5 text-sm hover:bg-surface-container-low flex items-center gap-2 cursor-pointer ${
+                      currentLang === "en" ? "text-secondary font-semibold" : "text-on-surface"
+                    }`}
+                  >
+                    🇺🇸 English
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Hotline */}
+            <a
+              className="hidden 2xl:flex items-center gap-space-xs text-on-surface-variant hover:text-secondary transition-colors px-space-sm"
+              href="tel:19006868"
+            >
+              <span className="material-symbols-outlined text-[18px] text-secondary">support_agent</span>
+              <span className="font-label-md text-label-md">1900 6868</span>
+            </a>
+
+            {/* Quick booking CTA */}
+            <Link
+              to="/rooms"
+              className="hidden sm:inline-flex items-center justify-center px-space-lg py-space-sm bg-secondary text-on-secondary rounded-lg font-label-lg text-label-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-[0_2px_8px_rgba(114,91,56,0.18)] cursor-pointer"
+              data-path="dat-phong-ngay"
+            >
+              Đặt Phòng Ngay
+            </Link>
+
+            {/* User Profile Avatar with dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                className="flex items-center gap-space-sm pl-space-xs cursor-pointer focus:outline-none text-left"
+                type="button"
+              >
+                <div className="hidden md:flex flex-col text-right">
+                  <span className="font-label-md text-label-md text-on-surface font-semibold truncate max-w-[140px]">
+                    {user?.fullName || "Nguyễn Văn An"}
+                  </span>
+                  <span className="font-label-sm text-label-sm text-secondary">
+                    {user?.role === "Admin"
+                      ? "Quản Trị Viên"
+                      : user?.role === "Staff"
+                      ? "Nhân Viên"
+                      : "Hội viên Gold"}
+                  </span>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
                   <span className="material-symbols-outlined text-on-primary text-[18px]">person</span>
-                </Link>
-              </div>
-            )}
+                </div>
+              </button>
+
+              {userDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-56 bg-surface-container-lowest rounded-xl shadow-xl border border-surface-container-high py-2 z-50 animate-fade-in">
+                  <div className="px-4 py-2 border-b border-surface-container-high">
+                    <p className="font-title-md text-sm text-on-surface font-semibold truncate">
+                      {user?.fullName || "Nguyễn Văn An"}
+                    </p>
+                    <p className="font-label-sm text-xs text-secondary truncate">
+                      {user?.email || "nguyenvanan.vip@grandhorizon.com"}
+                    </p>
+                  </div>
+                  {user?.role && user.role !== "Guest" && (
+                    <Link
+                      to="/dashboard"
+                      onClick={() => setUserDropdownOpen(false)}
+                      className="block px-4 py-2 font-label-md text-on-surface hover:bg-surface-container-low transition-colors"
+                    >
+                      Bảng Quản Trị Hệ Thống
+                    </Link>
+                  )}
+                  <Link
+                    to="/rooms"
+                    onClick={() => setUserDropdownOpen(false)}
+                    className="block px-4 py-2 font-label-md text-on-surface hover:bg-surface-container-low transition-colors"
+                  >
+                    Khám Phá Buồng Phòng
+                  </Link>
+                  {user ? (
+                    <button
+                      onClick={() => {
+                        setUserDropdownOpen(false);
+                        logout();
+                      }}
+                      className="w-full text-left px-4 py-2 font-label-md text-error hover:bg-error-container/20 transition-colors flex items-center gap-2 cursor-pointer"
+                    >
+                      <LogOut className="w-4 h-4" /> Đăng Xuất
+                    </button>
+                  ) : (
+                    <Link
+                      to="/login"
+                      onClick={() => setUserDropdownOpen(false)}
+                      className="block px-4 py-2 font-label-md text-secondary font-semibold hover:bg-secondary-container/20 transition-colors"
+                    >
+                      Đăng Nhập Tài Khoản
+                    </Link>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="xl:hidden p-2 text-on-surface hover:text-secondary rounded-lg cursor-pointer"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Drawer */}
+        {mobileMenuOpen && (
+          <div className="xl:hidden bg-surface-container-lowest border-b border-surface-container-high px-margin py-space-md space-y-space-sm shadow-xl">
+            <Link
+              to="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 font-title-md text-on-surface hover:text-secondary border-b border-surface-container-low"
+            >
+              Trang Chủ
+            </Link>
+            <Link
+              to="/rooms"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 font-title-md text-on-surface hover:text-secondary border-b border-surface-container-low"
+            >
+              Khám Phá Phòng
+            </Link>
+            <a
+              href="/#dich-vu-tien-ich"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 font-title-md text-on-surface hover:text-secondary border-b border-surface-container-low"
+            >
+              Dịch Vụ &amp; Tiện Ích
+            </a>
+            <Link
+              to="/dining"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 font-title-md text-on-surface hover:text-secondary border-b border-surface-container-low"
+            >
+              Ẩm Thực F&amp;B
+            </Link>
+            <a
+              href="/#uu-dai-hoi-vien"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 font-title-md text-on-surface hover:text-secondary border-b border-surface-container-low"
+            >
+              Ưu Đãi &amp; Hội Viên
+            </a>
+            <div className="pt-2 flex flex-col gap-2">
+              <Link
+                to="/rooms"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-space-sm bg-secondary text-on-secondary rounded-lg text-center font-label-lg shadow-sm"
+              >
+                Đặt Phòng Ngay
+              </Link>
+              {!user && (
+                <Link
+                  to="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full py-space-sm bg-surface-container-low text-on-surface rounded-lg text-center font-label-lg"
+                >
+                  Đăng Nhập Hội Viên
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
       </header>
 
-      {/* Main Page Content */}
-      <main className="flex-1">
-      {/* Main Content Area */}
-      <main className="w-full pt-16 bg-surface-container-lowest flex-1">
+      {/* Main Content Router Outlet */}
+      <main className="w-full pt-20 bg-background flex-1">
         <Outlet />
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-sm">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center gap-2 text-white font-bold text-lg mb-4">
-              <Hotel className="w-5 h-5 text-amber-500" />
-              <span>GRAND HOTEL RESORT</span>
-      <footer className="w-full bg-surface-container-lowest border-t border-primary mt-auto">
-        <div className="max-w-container-max mx-auto px-gutter-desktop py-space-2xl">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-space-xl mb-space-2xl">
-            {/* Column 1 */}
-            <div className="space-y-space-md">
-              <div className="border border-primary p-space-xs inline-block bg-surface-container-lowest">
-                <span className="font-headline-sm text-headline-sm uppercase text-primary">[ HOTEL NAME ]</span>
+      <footer className="w-full bg-surface-container-lowest text-on-surface-variant pt-space-xl pb-space-lg shadow-[0_-1px_8px_rgba(0,0,0,0.02)]">
+        <div className="w-full px-margin">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter mb-space-xl">
+            {/* Col 1 */}
+            <div className="lg:col-span-4 flex flex-col gap-space-md">
+              <div className="flex items-center gap-space-sm">
+                <div className="w-9 h-9 rounded-lg bg-secondary-container/40 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-secondary text-[22px]">spa</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-headline-sm text-headline-sm text-on-surface leading-tight">
+                    Grand Horizon
+                  </span>
+                  <span className="font-label-sm text-label-sm text-secondary uppercase tracking-wider">
+                    Resort &amp; Suites
+                  </span>
+                </div>
               </div>
-              <div className="space-y-space-xs">
-                <div className="h-2.5 w-4/5 bg-secondary-fixed"></div>
-                <div className="h-2.5 w-3/5 bg-secondary-fixed"></div>
-                <div className="h-2.5 w-2/3 bg-secondary-fixed"></div>
-              </div>
-            </div>
-            <p className="text-xs leading-relaxed text-slate-400">
-              Hệ sinh thái khách sạn và khu nghỉ dưỡng đẳng cấp quốc tế. Mang
-              đến trải nghiệm lưu trú và ẩm thực đỉnh cao cho quý khách hàng.
-            </p>
-
-            {/* Column 2 */}
-            <div className="space-y-space-sm">
-              <div className="font-headline-sm text-headline-sm uppercase text-primary border-b border-outline-variant pb-space-xs">
-                EXPLORE
-              </div>
-              <div className="space-y-space-xs pt-space-xs">
-                <div className="h-2.5 w-24 bg-secondary-fixed"></div>
-                <div className="h-2.5 w-28 bg-secondary-fixed"></div>
-                <div className="h-2.5 w-20 bg-secondary-fixed"></div>
-                <div className="h-2.5 w-32 bg-secondary-fixed"></div>
+              <p className="font-body-md text-body-md text-on-surface-variant max-w-sm">
+                Khu nghỉ dưỡng sang trọng bậc nhất bên bờ đại dương nguyên sơ. Trải nghiệm đặc quyền nghỉ dưỡng thanh bình, ẩm thực thượng hạng và phong cách sống thượng lưu đẳng cấp 5 sao quốc tế.
+              </p>
+              <div className="flex items-center gap-space-md text-secondary">
+                <span className="material-symbols-outlined text-[20px]">award_star</span>
+                <span className="material-symbols-outlined text-[20px]">verified</span>
+                <span className="material-symbols-outlined text-[20px]">hotel_class</span>
+                <span className="font-label-sm text-label-sm text-on-surface-variant">
+                  Chứng nhận Travelers' Choice 2024
+                </span>
               </div>
             </div>
 
-            {/* Column 3 */}
-            <div className="space-y-space-sm">
-              <div className="font-headline-sm text-headline-sm uppercase text-primary border-b border-outline-variant pb-space-xs">
-                SUPPORT
-              </div>
-              <div className="space-y-space-xs pt-space-xs">
-                <div className="h-2.5 w-24 bg-secondary-fixed"></div>
-                <div className="h-2.5 w-36 bg-secondary-fixed"></div>
-                <div className="h-2.5 w-28 bg-secondary-fixed"></div>
-                <div className="h-2.5 w-16 bg-secondary-fixed"></div>
-              </div>
+            {/* Col 2 */}
+            <div className="lg:col-span-2 flex flex-col gap-space-sm">
+              <h3 className="font-title-md text-title-md text-on-surface uppercase tracking-wider mb-space-xs">
+                Khám Phá
+              </h3>
+              <a
+                className="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors"
+                data-path="ve-chung-toi"
+                href="#ve-chung-toi"
+              >
+                Về chúng tôi
+              </a>
+              <Link
+                className="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors"
+                data-path="chinh-sach-dat-phong-va-huy-phong"
+                to="/rooms"
+              >
+                Chính sách &amp; Hủy phòng
+              </Link>
+              <Link
+                className="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors"
+                data-path="quy-dinh-luu-tru"
+                to="/rooms"
+              >
+                Quy định lưu trú
+              </Link>
+              <a
+                className="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors"
+                data-path="tuyen-dung"
+                href="#tuyen-dung"
+              >
+                Tuyển dụng
+              </a>
             </div>
 
-            {/* Column 4 */}
-            <div className="space-y-space-sm">
-              <div className="font-headline-sm text-headline-sm uppercase text-primary border-b border-outline-variant pb-space-xs">
-                CONTACT
-              </div>
-              <div className="space-y-space-xs pt-space-xs">
-                <div className="h-2.5 w-3/4 bg-secondary-fixed"></div>
-                <div className="h-2.5 w-1/2 bg-secondary-fixed"></div>
-                <div className="h-2.5 w-2/3 bg-secondary-fixed"></div>
+            {/* Col 3 */}
+            <div className="lg:col-span-3 flex flex-col gap-space-sm">
+              <h3 className="font-title-md text-title-md text-on-surface uppercase tracking-wider mb-space-xs">
+                Liên Hệ
+              </h3>
+              <p className="font-body-md text-body-md text-on-surface-variant flex items-start gap-space-xs">
+                <span className="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">location_on</span>
+                Bãi Dài, Bán Đảo Cam Ranh &amp; Phú Quốc, Việt Nam
+              </p>
+              <p className="font-body-md text-body-md text-on-surface-variant flex items-center gap-space-xs">
+                <span className="material-symbols-outlined text-secondary text-[18px] shrink-0">mail</span>
+                concierge@grandhorizonresort.com
+              </p>
+              <p className="font-body-md text-body-md text-on-surface-variant flex items-center gap-space-xs">
+                <span className="material-symbols-outlined text-secondary text-[18px] shrink-0">call</span>
+                Hotline: 1900 6868 - (0258) 398 8888
+              </p>
+              <p className="font-label-sm text-label-sm text-outline mt-space-xs">
+                GPKD Lữ Hành Quốc Tế: 79-888/2022/TCDL-GP
+              </p>
+            </div>
+
+            {/* Col 4 */}
+            <div className="lg:col-span-3 flex flex-col gap-space-md">
+              <h3 className="font-title-md text-title-md text-on-surface uppercase tracking-wider">
+                Bảo Mật &amp; Thanh Toán
+              </h3>
+              <p className="font-body-sm text-body-sm text-on-surface-variant">
+                Cổng giao dịch mã hóa 256-bit chuẩn PCI-DSS quốc tế.
+              </p>
+              <div className="flex flex-wrap items-center gap-space-sm">
+                <span className="px-space-sm py-space-xs bg-surface-container-low rounded font-label-sm text-label-sm text-on-surface font-semibold">
+                  VietQR
+                </span>
+                <span className="px-space-sm py-space-xs bg-surface-container-low rounded font-label-sm text-label-sm text-on-surface font-semibold">
+                  VISA
+                </span>
+                <span className="px-space-sm py-space-xs bg-surface-container-low rounded font-label-sm text-label-sm text-on-surface font-semibold">
+                  Mastercard
+                </span>
+                <span className="px-space-sm py-space-xs bg-surface-container-low rounded font-label-sm text-label-sm text-on-surface font-semibold">
+                  VNPAY
+                </span>
               </div>
             </div>
           </div>
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-xs uppercase tracking-wider">
-              Hệ thống phòng
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <Link to="/rooms" className="hover:text-amber-400">
-                  Phòng Deluxe View Biển
-                </Link>
-              </li>
-              <li>
-                <Link to="/rooms" className="hover:text-amber-400">
-                  Executive Suite
-                </Link>
-              </li>
-              <li>
-                <Link to="/rooms" className="hover:text-amber-400">
-                  Presidential Villa
-                </Link>
-              </li>
-            </ul>
 
-          {/* Bottom Bar */}
-          <div className="border-t border-outline-variant pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm">
-            <span className="font-caption text-caption text-on-surface-variant uppercase">
-              [ © 2025 HOTEL SYSTEM. ALL RIGHTS RESERVED ]
+          <div className="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md">
+            <span className="font-body-sm text-body-sm text-outline">
+              © 2024 Grand Horizon Resort &amp; Suites. Bản quyền thuộc về Tập đoàn Khách sạn &amp; Nghỉ dưỡng Grand Horizon.
             </span>
-            <div className="flex items-center gap-space-md">
-              <span className="font-caption text-caption text-on-surface-variant uppercase">WIREFRAME SPEC V1.0</span>
-              <span className="font-caption text-caption text-on-surface-variant uppercase">STATUS: DRAFT</span>
+            <div className="flex items-center gap-space-md font-label-sm text-label-sm text-on-surface-variant">
+              <a className="hover:text-secondary transition-colors" data-path="chinh-sach-bao-mat" href="#">
+                Chính sách bảo mật
+              </a>
+              <span>•</span>
+              <a className="hover:text-secondary transition-colors" data-path="dieu-khoan-su-dung" href="#">
+                Điều khoản sử dụng
+              </a>
             </div>
           </div>
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-xs uppercase tracking-wider">
-              Dành cho nhân viên
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <Link to="/dashboard" className="hover:text-amber-400">
-                  Cổng Quản Trị &amp; Lễ Tân
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard/kitchen" className="hover:text-amber-400">
-                  Màn Hình Bếp (KDS)
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard/rooms" className="hover:text-amber-400">
-                  Vận Hành Buồng Phòng
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-xs uppercase tracking-wider">
-              Liên hệ
-            </h4>
-            <p className="text-xs leading-relaxed">
-              Địa chỉ: 123 Đại lộ Lê Lợi, Quận 1, TP. Hồ Chí Minh
-            </p>
-            <p className="text-xs mt-2">Email: contact@grandhotel.vn</p>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 mt-8 pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
-          &copy; {new Date().getFullYear()} Grand Hotel Management System - Đồ
-          án Chuyên đề Phát triển Web 1 (Nhóm C).
         </div>
       </footer>
     </div>
