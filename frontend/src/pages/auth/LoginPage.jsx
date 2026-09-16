@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Hotel, KeyRound, Mail, AlertCircle } from "lucide-react";
+import { KeyRound, Mail, AlertCircle, ArrowLeft } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
 export default function LoginPage() {
@@ -38,22 +38,29 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex flex-col justify-center items-center p-6 text-slate-800">
-      <div className="max-w-md w-full bg-white rounded-3xl p-8 shadow-2xl border border-slate-100">
+    <div className="min-h-screen bg-primary-container relative flex flex-col justify-center items-center p-6 text-on-surface overflow-hidden">
+      {/* Ambient Gold & Navy Glow Background */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-secondary/20 blur-3xl pointer-events-none"></div>
+
+      <div className="max-w-md w-full bg-surface-container-lowest rounded-xl p-space-xl shadow-2xl border border-surface-container-high relative z-10 animate-fade-in">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center text-slate-900 mx-auto mb-3 shadow-md shadow-amber-500/20">
-            <Hotel className="w-6 h-6" />
+          <div className="w-14 h-14 bg-secondary-container/40 rounded-xl flex items-center justify-center text-secondary mx-auto mb-3 shadow-sm">
+            <span className="material-symbols-outlined text-[30px] text-secondary">spa</span>
           </div>
-          <h2 className="text-2xl font-bold text-slate-900">
-            Đăng Nhập Hệ Thống
+          <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">
+            Grand Horizon Resort &amp; Suites
+          </span>
+          <h2 className="font-headline-md text-headline-md text-on-surface mt-1">
+            Cổng Thông Tin Đăng Nhập
           </h2>
-          <p className="text-xs text-slate-500 mt-1">
-            Hệ thống quản lý khách sạn &amp; đặt phòng thông minh
+          <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Dành cho Thượng khách Hội viên &amp; Đội ngũ vận hành
           </p>
         </div>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl flex items-center gap-2">
+          <div className="mb-4 p-3 bg-error-container/40 border border-error/30 text-error text-xs rounded-lg flex items-center gap-2">
             <AlertCircle className="w-4 h-4 flex-shrink-0" />
             <span>{error}</span>
           </div>
@@ -61,35 +68,35 @@ export default function LoginPage() {
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-              Email đăng nhập
+            <label className="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-1.5 font-semibold">
+              Địa chỉ Email
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+              <Mail className="w-4 h-4 text-outline absolute left-3.5 top-3.5" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="user_1@hoteldomain.vn"
-                className="w-full text-xs pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full text-sm pl-10 pr-4 py-2.5 bg-surface-container-low border border-surface-container-high rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-on-surface"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-              Mật khẩu
+            <label className="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-1.5 font-semibold">
+              Mật khẩu bảo mật
             </label>
             <div className="relative">
-              <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+              <KeyRound className="w-4 h-4 text-outline absolute left-3.5 top-3.5" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••"
-                className="w-full text-xs pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full text-sm pl-10 pr-4 py-2.5 bg-surface-container-low border border-surface-container-high rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-on-surface"
               />
             </div>
           </div>
@@ -97,52 +104,52 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl shadow-md shadow-amber-500/10 transition"
+            className="w-full py-3 bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg shadow-md transition cursor-pointer"
           >
-            {submitting ? "Đang xác thực..." : "Đăng Nhập"}
+            {submitting ? "Đang xác thực bảo mật..." : "Đăng Nhập"}
           </button>
         </form>
 
         {/* Quick switch presets for testing roles */}
-        <div className="mt-8 pt-6 border-t border-slate-100">
-          <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2 text-center">
-            Chọn nhanh vai trò kiểm thử (Password: 123456)
+        <div className="mt-8 pt-6 border-t border-surface-container">
+          <p className="font-label-sm text-label-sm font-semibold text-on-surface-variant uppercase tracking-wider mb-2 text-center">
+            Chọn nhanh vai trò thử nghiệm (Password: 123456)
           </p>
           <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
               onClick={() => quickSwitch("user_1@hoteldomain.vn")}
-              className="px-2.5 py-1.5 bg-slate-100 hover:bg-amber-50 text-[11px] font-medium text-slate-700 rounded-lg border border-slate-200 text-left truncate"
+              className="px-2.5 py-2 bg-surface-container-low hover:bg-secondary-container/40 text-xs font-medium text-on-surface rounded-lg border border-surface-container-high text-left truncate cursor-pointer transition"
             >
-              👑 Admin (user_1)
+              👑 Quản Trị (Admin)
             </button>
             <button
               type="button"
               onClick={() => quickSwitch("user_2@hoteldomain.vn")}
-              className="px-2.5 py-1.5 bg-slate-100 hover:bg-amber-50 text-[11px] font-medium text-slate-700 rounded-lg border border-slate-200 text-left truncate"
+              className="px-2.5 py-2 bg-surface-container-low hover:bg-secondary-container/40 text-xs font-medium text-on-surface rounded-lg border border-surface-container-high text-left truncate cursor-pointer transition"
             >
-              🛎️ Lễ tân (user_2)
+              🛎️ Lễ Tân (Reception)
             </button>
             <button
               type="button"
               onClick={() => quickSwitch("user_3@hoteldomain.vn")}
-              className="px-2.5 py-1.5 bg-slate-100 hover:bg-amber-50 text-[11px] font-medium text-slate-700 rounded-lg border border-slate-200 text-left truncate"
+              className="px-2.5 py-2 bg-surface-container-low hover:bg-secondary-container/40 text-xs font-medium text-on-surface rounded-lg border border-surface-container-high text-left truncate cursor-pointer transition"
             >
-              👨‍🍳 Đầu bếp (user_3)
+              👨‍🍳 Bếp Trưởng (Kitchen)
             </button>
             <button
               type="button"
               onClick={() => quickSwitch("user_4@hoteldomain.vn")}
-              className="px-2.5 py-1.5 bg-slate-100 hover:bg-amber-50 text-[11px] font-medium text-slate-700 rounded-lg border border-slate-200 text-left truncate"
+              className="px-2.5 py-2 bg-surface-container-low hover:bg-secondary-container/40 text-xs font-medium text-on-surface rounded-lg border border-surface-container-high text-left truncate cursor-pointer transition"
             >
-              🧹 Buồng phòng (user_4)
+              🧹 Buồng Phòng (Housekeeper)
             </button>
           </div>
         </div>
 
-        <div className="mt-6 text-center text-xs text-slate-500">
-          <Link to="/" className="hover:text-amber-600 transition">
-            &larr; Quay lại trang chủ khách sạn
+        <div className="mt-6 text-center text-xs text-on-surface-variant">
+          <Link to="/" className="inline-flex items-center gap-1 hover:text-secondary transition font-medium">
+            <ArrowLeft className="w-3.5 h-3.5" /> Trở về trang chủ Grand Horizon
           </Link>
         </div>
       </div>
