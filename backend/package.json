@@ -7,7 +7,8 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "migrate": "node src/migrations/runMigrations.js",
-    "seed": "node src/seeders/seedAll.js"
+    "seed": "node src/seeders/seedAll.js",
+    "check-db": "node src/seeders/checkCount.js"
   },
   "keywords": [
     "hotel-management",
