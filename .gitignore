@@ -22,5 +22,11 @@ rad.json
 #Test results file
 TestResults.xml
 
+# Dependency directories
 node_modules/
+**/node_modules/
+
+# Environment variables
 .env
+.env.*
+!.env.example
