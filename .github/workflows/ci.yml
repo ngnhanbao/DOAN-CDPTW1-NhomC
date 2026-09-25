@@ -52,3 +52,35 @@ jobs:
 
       - name: Build Docker Images
         run: docker compose build
+
+  # 3. CD: Tự động kết nối Server và cập nhật web (Chỉ chạy khi push code vào master)
+  deploy-to-server:
+    name: Auto Deploy to Server (CD)
+    needs: docker-validation
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            echo "1. Chuyển đến thư mục dự án..."
+            if [ ! -d "DOAN-CDPTW1-NhomC" ]; then
+              git clone https://github.com/ngnhanbao/DOAN-CDPTW1-NhomC.git
+            fi
+            cd DOAN-CDPTW1-NhomC
+            
+            echo "2. Kéo code mới nhất từ master..."
+            git checkout master
+            git pull origin master
+            
+            echo "3. Cập nhật và chạy lại Docker..."
+            docker compose down
+            docker compose up -d --build
+            echo "🎉 Web của bạn đã được cập nhật bản mới nhất!"
