@@ -15,12 +15,18 @@ echo [2/3] Xay dung lai cac Docker Image va khoi dong (Build & Deploy)...
 docker compose up -d --build
 
 echo.
-echo [3/3] Don dep he thong (Xoa cac image/container cu khong dung)...
+echo [3/4] Khoi tao va nap du lieu mau vao Database (Dung cho QC)...
+timeout /t 3 /nobreak >nul
+docker exec hotel_backend npm run migrate
+docker exec hotel_backend npm run seed
+
+echo.
+echo [4/4] Don dep he thong (Xoa cac image/container cu khong dung)...
 docker image prune -f
 
 echo.
 echo ===================================================
-echo   TRIEN KHAI THANH CONG!
+echo   TRIEN KHAI LOCAL THANH CONG (READY FOR QC)!
 echo   Frontend:    http://localhost:3000
 echo   Backend API: http://localhost:5000/api/health
 echo   phpMyAdmin:  http://localhost:8080
