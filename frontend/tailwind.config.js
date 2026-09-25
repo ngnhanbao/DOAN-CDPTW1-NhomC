@@ -9,6 +9,7 @@ export default {
     extend: {
       colors: {
         primary: {
+          DEFAULT: '#000000',
           50: '#f0fdf4',
           100: '#dcfce7',
           500: '#22c55e',
@@ -19,7 +20,7 @@ export default {
           navy: '#0f172a',
           gold: '#d97706',
           sand: '#f8fafc',
-        }
+        },
         "surface-container-low": "#f1f3ff",
         "surface-container-lowest": "#ffffff",
         "on-secondary": "#ffffff",
@@ -40,7 +41,6 @@ export default {
         "inverse-on-surface": "#edf0ff",
         "on-secondary-container": "#5e6572",
         "surface-container-highest": "#dce2f7",
-        "primary": "#000000",
         "primary-fixed": "#e2e2e2",
         "surface-variant": "#dce2f7",
         "on-surface-variant": "#4c4546",
