@@ -1,0 +1,36 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Cài đặt và kiểm tra Frontend
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Build Frontend (Check for Errors)
+        working-directory: ./frontend
+        run: npm run build
+
+      # Cài đặt và kiểm tra Backend
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: npm install
